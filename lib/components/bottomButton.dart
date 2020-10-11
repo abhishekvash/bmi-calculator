@@ -28,8 +28,9 @@ class BottomButton extends StatelessWidget {
             state.weight = 75;
             state.gender = null;
             Navigator.pop(context);
+          } else {
+            Navigator.pushNamed(context, route);
           }
-          Navigator.pushNamed(context, route);
         },
         color: kPrimaryAccentColor,
       ),
