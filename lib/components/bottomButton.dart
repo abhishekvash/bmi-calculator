@@ -1,11 +1,13 @@
 import 'package:bmi_calculator/constants.dart';
 import 'package:flutter/material.dart';
+import '../states.dart';
 
 class BottomButton extends StatelessWidget {
+  final States state;
   final String route;
   final String text;
 
-  BottomButton({this.route, this.text});
+  BottomButton({this.route, this.text, this.state});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +22,13 @@ class BottomButton extends StatelessWidget {
           ),
         ),
         onPressed: () {
+          if (route == '/') {
+            state.age = 21;
+            state.height = 180;
+            state.weight = 75;
+            state.gender = null;
+            Navigator.pop(context);
+          }
           Navigator.pushNamed(context, route);
         },
         color: kPrimaryAccentColor,

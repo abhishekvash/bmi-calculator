@@ -23,9 +23,30 @@ const kTitleTextStyle = TextStyle(
     fontWeight: FontWeight.w700, fontSize: 45.0, color: Color(0xBBFFFFFF));
 
 const kResultNormal = TextStyle(
-    fontWeight: FontWeight.w700, fontSize: 25.0, color: Color(0xDD24D876),);
+  fontWeight: FontWeight.w700,
+  fontSize: 25.0,
+  color: Color(0xDD24D876),
+);
+
+const kResultOverweight = TextStyle(
+  fontWeight: FontWeight.w700,
+  fontSize: 25.0,
+  color: Color(0xDDB82424),
+);
+
+const kResultUnderweight = TextStyle(
+  fontWeight: FontWeight.w700,
+  fontSize: 25.0,
+  color: Color(0xDDd8c024),
+);
 
 const kBMITextStyle = TextStyle(
-    fontWeight: FontWeight.w900, fontSize: 95.0, color: Color(0xEEFFFFFF),);
+  fontWeight: FontWeight.w900,
+  fontSize: 95.0,
+  color: Color(0xEEFFFFFF),
+);
 const kBMIHelperTextStyle = TextStyle(
-    fontWeight: FontWeight.w400, fontSize: 25.0, color: Color(0xAAFFFFFF),);
+  fontWeight: FontWeight.w400,
+  fontSize: 25.0,
+  color: Color(0xAAFFFFFF),
+);

@@ -5,30 +5,39 @@ import 'package:bmi_calculator/components/reusableCard.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../constants.dart';
+import '../states.dart';
 
 class InputPage extends StatefulWidget {
+  final States state;
+
+  InputPage({this.state});
+
   @override
-  _InputPageState createState() => _InputPageState();
+  _InputPageState createState() => _InputPageState(state);
 }
 
 class _InputPageState extends State<InputPage> {
+  States state;
+
+  _InputPageState(this.state);
+
   Color maleCardColor = kCardColorInactive;
   Color femaleCardColor = kCardColorInactive;
-  int height = 180;
-  int age = 21;
-  int weight = 75;
 
-  void genderSelectReact(String gender) {
-    if (gender == 'Male') {
+  void genderSelectReact() {
+    if (state.gender == 'Male') {
       setState(() {
         maleCardColor = kCardColorActive;
         femaleCardColor = kCardColorInactive;
       });
-    } else {
+    } else if (state.gender == 'Female') {
       setState(() {
         femaleCardColor = kCardColorActive;
         maleCardColor = kCardColorInactive;
       });
+    } else {
+      femaleCardColor = kCardColorInactive;
+      maleCardColor = kCardColorInactive;
     }
   }
 
@@ -50,14 +59,18 @@ class _InputPageState extends State<InputPage> {
                   maleCardColor,
                   child: IconCard(FontAwesomeIcons.mars, 'MALE'),
                   onPress: () {
-                    genderSelectReact('Male');
+                    setState(() {
+                      state.gender = 'Male';
+                    });
                   },
                 ),
                 ReusableCard(
                   femaleCardColor,
                   child: IconCard(FontAwesomeIcons.venus, 'FEMALE'),
                   onPress: () {
-                    genderSelectReact('Female');
+                    setState(() {
+                      state.gender = 'Female';
+                    });
                   },
                 )
               ],
@@ -81,7 +94,7 @@ class _InputPageState extends State<InputPage> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            height.toString(),
+                            state.height.toString(),
                             style: kLabelTextStyleBold,
                           ),
                           Text(
@@ -102,10 +115,10 @@ class _InputPageState extends State<InputPage> {
                             overlayShape:
                                 RoundSliderOverlayShape(overlayRadius: 25.0)),
                         child: Slider(
-                          value: height.toDouble(),
+                          value: state.height.toDouble(),
                           onChanged: (value) {
                             setState(() {
-                              height = value.toInt();
+                              state.height = value.toInt();
                             });
                           },
                           min: 45,
@@ -123,29 +136,29 @@ class _InputPageState extends State<InputPage> {
               children: [
                 IncrementDecrementCard(
                   title: 'WEIGHT',
-                  value: weight,
+                  value: state.weight,
                   onDecrement: () {
                     setState(() {
-                      weight--;
+                      state.weight--;
                     });
                   },
                   onIncrement: () {
                     setState(() {
-                      weight++;
+                      state.weight++;
                     });
                   },
                 ),
                 IncrementDecrementCard(
                   title: 'AGE',
-                  value: age,
+                  value: state.age,
                   onDecrement: () {
                     setState(() {
-                      age--;
+                      state.age--;
                     });
                   },
                   onIncrement: () {
                     setState(() {
-                      age++;
+                      state.age++;
                     });
                   },
                 ),

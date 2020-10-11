@@ -2,10 +2,16 @@ import 'package:bmi_calculator/components/bottomButton.dart';
 import 'package:bmi_calculator/components/reusableCard.dart';
 import 'package:flutter/material.dart';
 import '../constants.dart';
+import '../states.dart';
+import '../brain.dart';
 
 class ResultsPage extends StatelessWidget {
+  final States state;
+  ResultsPage({this.state});
+
   @override
   Widget build(BuildContext context) {
+    final Brain brain = Brain(height: state.height, weight: state.weight);
     return Scaffold(
         appBar: AppBar(
           centerTitle: true,
@@ -34,24 +40,28 @@ class ResultsPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   Text(
-                    'NORMAL',
-                    style: kResultNormal,
+                    brain.getResult(),
+                    style: brain.getResultColor(),
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    '22.3',
+                    brain.getBMI(),
                     style: kBMITextStyle,
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    'Your BMI is just right! Keep it up!',
+                    brain.getHelper(),
                     style: kBMIHelperTextStyle,
                     textAlign: TextAlign.center,
                   )
                 ],
               ),
             ),
-            BottomButton(route: '/', text: 'RECALCULATE BMI')
+            BottomButton(
+              route: '/',
+              text: 'RECALCULATE BMI',
+              state: state,
+            )
           ],
         ));
   }
