@@ -1,9 +1,10 @@
+import 'package:bmi_calculator/components/bottomButton.dart';
+import 'package:bmi_calculator/components/iconCard.dart';
+import 'package:bmi_calculator/components/incrementDecrementCard.dart';
+import 'package:bmi_calculator/components/reusableCard.dart';
 import 'package:flutter/material.dart';
-import 'iconCard.dart';
-import 'incrementDecrementCard.dart';
-import 'reusableCard.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -150,23 +151,7 @@ class _InputPageState extends State<InputPage> {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: FlatButton(
-                child: Padding(
-                  padding: const EdgeInsets.all(17.0),
-                  child: Text(
-                    'CALCULATE BMI',
-                    style:
-                        TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
-                  ),
-                ),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/results');
-                },
-                color: kPrimaryAccentColor,
-              ),
-            )
+            BottomButton(route: '/results', text: 'CALCULATE BMI')
           ],
         ),
       ),

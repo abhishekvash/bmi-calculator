@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'input_page.dart';
+import 'screens/input_page.dart';
 import 'constants.dart';
-import 'results_page.dart';
+import 'screens/results_page.dart';
 import 'package:flutter/services.dart';
 
 void main() {
